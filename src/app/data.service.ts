@@ -1,58 +1,64 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { promise } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  api_key = 'fKlyDUAJAj9QhBOVXJomR5vZxZEQj1123xq9Eh78';
-  api_url = 'https://ui5wfbe5i0.execute-api.ap-southeast-2.amazonaws.com/test/';
-  db_url = ''
+  api_url = 'https://9uj5kwwke4.execute-api.ap-southeast-2.amazonaws.com/dev/';
 
   constructor(private http:HttpClient) { }
 
-  login(username, password):Promise <any> {
+  
+  get_all_items():Promise <any> {
     var promise = new Promise<any> ((resolve, reject) => {
-      this.http.get('assets/users.json')
+      console.log("Calling api");
+      this.http.get(this.api_url + 'list').toPromise().then(
+        (res:any) => {
+          console.log("Success");
+          // console.log(res['body']['Items']);
+          resolve(this.fix_output(res['body']['Items']));
+        },
+        (res:any) => {
+          console.log("Error");
+          console.log(res);
+          reject(res);
+        }
+      );
     });
     return promise;
 
   }
 
-  // getTest():Promise<any> {
-  //   console.log("hi");
-  //   var promise = new Promise<any> ((resolve, reject) => {
-  //     this.http.get('assets/users.json').toPromise().then(
-  //       (res: any) => {
-  //         console.log(res);
-  //         console.log("hi3");
-  //         resolve(res);
-  //       },
-  //       (res:any) => {
-  //         reject(res);
-  //       }
-  //     );
+  buy_items(items):Promise<any> {
+    var promise = new Promise<any> ((resolve, reject) => {
+      console.log("Calling api");
+      this.http.post(this.api_url + 'buy',items).toPromise().then(
+        (res:any) => {
+          console.log("Success");
+          resolve(res);
+        },
+        (res:any) => {
+          console.log("Error");
+          console.log(res);
+          reject(res);
+        }
+      );
+    });
+    return promise;
+  }
+  
+  fix_output(items:any):Array<number> {
+    
+    var list:Array<number> = []
 
-  //   });
-  //   console.log('hi2');
-  //   return promise;
-  // }
+    for (let item of items) {
+      list.push(item['quantity']);
+    }
 
-  // postTest():Promise<any> {
-  //   // var options = {params: new HttpParams().set("test", "hi")};
-  //   var promise = new Promise<any> ((resolve, reject) => {
-  //     this.http.post(this.api_url + 'test-post', {"test": "hi"}).toPromise().then(
-  //       (res: any) => {
-  //         resolve(res);
-  //       },
-  //       (res:any) => {
-  //         reject(res);
-  //       }
-  //     );
+    return list;
 
-  //   });
-  //   return promise;
-  // }
+  }
+
 }
