@@ -10,8 +10,8 @@ export class AppComponent implements OnInit{
   buying = false;
   producing = false;
   stock = true;
-
-  rest:any;
+  ready = false;
+  sell = false;
 
   yay_type:string;
   yay_size:number;
@@ -66,6 +66,23 @@ export class AppComponent implements OnInit{
   stock_775percin:number;
   stock_775plaka:number;
 
+  ready_77001:number;
+  ready_77002:number;
+  ready_77003:number;
+  ready_77004:number;
+  ready_77005:number;
+  ready_77006:number;
+  ready_77007:number;
+  ready_77008:number;
+  ready_77009:number;
+  ready_77502:number;
+  ready_77503:number;
+  ready_77504:number;
+  ready_77505:number;
+  ready_77506:number;
+  ready_77507:number;
+  ready_77508:number;
+
 
   constructor(
     private data:DataService,
@@ -77,44 +94,108 @@ export class AppComponent implements OnInit{
 
   }
   
+  goToReadyStock() {
+    // API CAll get ready stock
+    this.get_ready_stock();
+    this.buying = false;
+    this.stock = false;
+    this.producing = false;
+    this.ready = true;
+    this.sell = false;
+  }
   
   goToBuy() {
     this.clear_buy_values();
     this.buying = true;
     this.stock = false;
+    this.ready = false;
     this.producing = false;
+    this.sell = false;
   }
   
   goToProducing() {
+    this.clear_produce_values();
+    this.buying = false;
+    this.stock = false;
+    this.ready = false;
+    this.producing = true;
+    this.sell = false;
+  }
+
+  goToSell() {
     this.clear_sell_values();
     this.buying = false;
     this.stock = false;
-    this.producing = true;
+    this.ready = false;
+    this.producing = false;
+    this.sell = true;
+  }
+
+  clear_sell_values() {
+    this.yay_type = undefined;
+    this.yay_size = undefined;
+    this.quantity = 0;
+    this.plaka = false;
   }
 
   goToStock() {
     // API call to get stock
-    // this.mock_stock(); 
     this.get_stock();
 
     this.buying = false;
+    this.ready = false;
     this.stock = true;
     this.producing = false;
   }
 
   sell_items() {
-    // API call to sell items
+    if (this.quantity !== 0) {
+
+      this.data.buy_items(this.format_sale_data()).then((res) => {
+        console.log(res);
+          if (res.statusCode === 200) {
+            alert("Satış Başarılı");
+            this.clear_sell_values();
+            this.goToStock();
+            this.goToSell();
+          } else if (res.statusCode === 400 || res.statusCode === 500) {
+            alert("Satış Başarısız\n" + res.body);
+            this.clear_sell_values();
+            this.goToStock();
+            this.goToSell();
+          }
+          
+
+        },
+        () => {
+          alert("Satış Başarısız");
+
+        }
+      );
+    } else {
+      alert("Lütfen Adet Giriniz");
+      this.clear_produce_values();
+      this.goToStock();
+      this.goToSell();
+    }
+
+  }
+
+
+  produce_items() {
+    // API call to produce items
     if (this.quantity !== 0) {
 
       this.data.buy_items(this.format_production_data()).then((res) => {
+        console.log(res);
           if (res.statusCode === 200) {
             alert("Üretim Başarılı");
-            this.clear_sell_values();
+            this.clear_produce_values();
             this.goToStock();
             this.goToProducing();
-          } else if (res.statusCode === 400) {
+          } else if (res.statusCode === 400 || res.statusCode === 500) {
             alert("Üretim Başarısız\n" + res.body);
-            this.clear_sell_values();
+            this.clear_produce_values();
             this.goToStock();
             this.goToProducing();
           }
@@ -128,14 +209,15 @@ export class AppComponent implements OnInit{
       );
     } else {
       alert("Lütfen Adet Giriniz");
-      this.clear_sell_values();
+      this.clear_produce_values();
       this.goToStock();
       this.goToProducing();
     }
   }
 
-  format_production_data() {
+  format_sale_data() {
     return {
+      'sell':true,
       'buy':false,
       'type': this.yay_type,
       'size': this.yay_size,
@@ -144,10 +226,19 @@ export class AppComponent implements OnInit{
     }
   }
 
-  clear_sell_values() {
+  format_production_data() {
+    return {
+      'sell':false,
+      'buy':false,
+      'type': this.yay_type,
+      'size': this.yay_size,
+      'quantity': this.quantity
+    }
+  }
+
+  clear_produce_values() {
     this.yay_type = undefined;
     this.yay_size = undefined;
-    this.plaka = false;
     this.quantity = 0;
 
   }
@@ -171,6 +262,7 @@ export class AppComponent implements OnInit{
 
   format_data() {
     return {
+      'sell':false,
       'buy':true,
       'items':[
         {
@@ -321,31 +413,40 @@ export class AppComponent implements OnInit{
 
   }
 
-  mock_stock() {
-    this.stock_77001 = 113;
-    this.stock_77002 = 2;
-    this.stock_77003 = 3;
-    this.stock_77004 = 4;
-    this.stock_77005 = 5;
-    this.stock_77006 = 6;
-    this.stock_77007 = 7;
-    this.stock_77008 = 8;
-    this.stock_77009 = 9;
-    this.stock_770kapak = 10;
-    this.stock_770percin = 11;
-    this.stock_770plaka = 12;
+  
+  get_ready_stock() {
+    this.data.get_all_ready_items().then(
+      (list) => {
+        // resolve
+        [
+          this.ready_77502,
+          this.ready_77503,
+          this.ready_77505,
+          this.ready_77008,
+          this.ready_77005,
+          this.ready_77009,
+          this.ready_77508,
+          this.ready_77007,
+          this.ready_77002,
+          this.ready_77504,
+          this.ready_77003,
+          this.ready_77001,
+          this.ready_77006,
+          this.ready_77507,
+          this.ready_77506,
+          this.ready_77004
+        ] = list;
+      },
+      () => {
+        this.clear_stock();
+      }
 
-    this.stock_77502 = 213;
-    this.stock_77503 = 14;
-    this.stock_77504 = 15;
-    this.stock_77505 = 16;
-    this.stock_77506 = 17;
-    this.stock_77507 = 18;
-    this.stock_77508 = 19;
-    this.stock_775kapak = 20;
-    this.stock_775percin = 22;
-    this.stock_775plaka = 23;
+    );
+
+    
+    
   }
+
   get_stock(){
     this.data.get_all_items().then(
       (list) => {
@@ -384,17 +485,3 @@ export class AppComponent implements OnInit{
   }
   
 }
-
-
-// test1() {
-  //   this.data.getTest().then(
-  //     (res:any) => {
-  //       this.testing = res;
-  //       console.log(res);
-  //     },
-  //     (res:any) => {
-  //       this.testing = res;
-  //     }
-
-  //   );
-  // }

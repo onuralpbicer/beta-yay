@@ -1,15 +1,11 @@
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <button (click)='goToBuy()' [disabled]='buying'>Alıma Git</button>
 <button (click)='goToProducing()' [disabled]='producing'>Üretime Git</button>
-<button (click)='goToStock()' [disabled]='stock'>Stoğa Git</button>
+<button (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
+<button (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
+<button (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
+
 <!-- <button (click)="testing()">test</button> -->
 <div>
     <ng-template [ngIf]='buying'>
@@ -176,12 +172,9 @@
             <input type="number" [(ngModel)]="quantity"/>
     </div>
 
+    
     <div class="row">
-        <label>Plaka</label>
-            <input type="checkbox" [(ngModel)]="plaka"/>
-    </div>
-    <div class="row">
-        <button (click)="sell_items()">Üretim</button>
+        <button (click)="produce_items()">Üretim</button>
     </div>
 
     </ng-template>
@@ -312,4 +305,145 @@
             </div>
         </div>
     </ng-template>
+
+
+
+
+    <ng-template [ngIf]='ready'>
+        <h1>Hazır Yaylar</h1>
+        <div class="row">
+            <div class="col">
+                <label >770-01(yay)</label> 
+                <input type="number" placeholder="{{ready_77001}}" disabled/>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >770-02(yay)</label> 
+                <input type="number" placeholder="{{ready_77002}}" disabled/> 
+            </div>
+            <div class="col">
+                <label >775-02(yay)</label> 
+                <input type="number" placeholder="{{ready_77502}}" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >770-03(yay)</label> 
+                <input type="number" placeholder="{{ready_77003}}"  disabled/> 
+            </div>
+            <div class="col">
+                <label >775-03(yay)</label> 
+                <input type="number" placeholder="{{ready_77503}}" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >770-04(yay)</label> 
+                <input type="number" placeholder="{{ready_77004}}" disabled/> 
+            </div>
+            <div class="col">
+                <label >775-04(yay)</label> 
+                <input type="number" placeholder="{{ready_77504}}" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >770-05(yay)</label> 
+                <input type="number" placeholder="{{ready_77005}}" disabled/> 
+            </div>
+            <div class="col">
+                <label >775-05(yay)</label> 
+                <input type="number" placeholder="{{ready_77505}}" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >770-06(yay)</label> 
+                <input type="number" placeholder="{{ready_77006}}" disabled/> 
+            </div>
+            <div class="col">
+                <label >775-06(yay)</label> 
+                <input type="number" placeholder="{{ready_77506}}" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >770-07(yay)</label> 
+                <input type="number" placeholder="{{ready_77007}}"  disabled/> 
+            </div>
+            <div class="col">
+                <label >775-07(yay)</label> 
+                <input type="number" placeholder="{{ready_77507}}" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >770-08(yay)</label> 
+                <input type="number" placeholder="{{ready_77008}}" disabled/> 
+            </div>
+            <div class="col">
+                <label >775-08(yay)</label> 
+                <input type="number" placeholder="{{ready_77508}}" disabled/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label >770-09(yay)</label> 
+                <input type="number" placeholder="{{ready_77009}}" disabled/> 
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        
+    </ng-template>
+
+
+
+    <ng-template [ngIf]='sell'>
+        <!-- Code for when you're producing -->
+        <div class="row">
+            <label>Yay Tipi</label>
+                <select [(ngModel)]="yay_type">
+    
+                    <option value="770">770</option>
+                    <option value="775">775</option>
+    
+                </select>
+        </div>
+        <div class="row">
+            <label>Yay Boyu</label>
+                <select [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
+    
+                    <option value="01" [disabled]="yay_type === '775'">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09" [disabled]="yay_type === '775'">09</option>
+    
+                    
+                </select> 
+        </div>
+        
+        <div class="row">
+            <label>Adet</label>
+                <input type="number" [(ngModel)]="quantity"/>
+        </div>
+    
+        <div class="row">
+            <label>Plaka</label>
+                <input type="checkbox" [(ngModel)]="plaka"/> 
+        </div>
+
+        <div class="row">
+            <button (click)="sell_items()">Satış</button>
+        </div>
+    
+        </ng-template>
 </div>

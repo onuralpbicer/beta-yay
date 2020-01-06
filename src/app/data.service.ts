@@ -10,7 +10,26 @@ export class DataService {
 
   constructor(private http:HttpClient) { }
 
-  
+  get_all_ready_items():Promise <any> {
+    var promise = new Promise<any> ((resolve, reject) => {
+      console.log("Calling api");
+      this.http.get(this.api_url + 'ready').toPromise().then(
+        (res:any) => {
+          console.log("Success");
+          // console.log(res['body']['Items']);
+          resolve(this.fix_output(res['body']['Items']));
+        },
+        (res:any) => {
+          console.log("Error");
+          console.log(res);
+          reject(res);
+        }
+      );
+    });
+    return promise;
+
+  }
+
   get_all_items():Promise <any> {
     var promise = new Promise<any> ((resolve, reject) => {
       console.log("Calling api");
@@ -30,6 +49,26 @@ export class DataService {
     return promise;
 
   }
+
+  sell_items(items):Promise<any> {
+    var promise = new Promise<any> ((resolve, reject) => {
+      console.log("Calling api");
+      this.http.post(this.api_url + 'sell',items).toPromise().then(
+        (res:any) => {
+          console.log("Success");
+          resolve(res);
+        },
+        (res:any) => {
+          console.log("Error");
+          console.log(res);
+          reject(res);
+        }
+      );
+    });
+    return promise;
+  }
+
+
 
   buy_items(items):Promise<any> {
     var promise = new Promise<any> ((resolve, reject) => {
