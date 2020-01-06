@@ -128,7 +128,7 @@
             </div>
         </div>
         <div class="row">
-            <button (click)="add_items()">Alım</button>
+            <button class="submit" (click)="add_items()">Alım</button>
         </div>
     </ng-template>
 
@@ -144,7 +144,7 @@
     <h1>Üretim</h1>
     <div class="row">
         <label>Yay Tipi</label>
-            <select [(ngModel)]="yay_type">
+            <select class="select" [(ngModel)]="yay_type">
 
                 <option value="770">770</option>
                 <option value="775">775</option>
@@ -153,7 +153,7 @@
     </div>
     <div class="row">
         <label>Yay Boyu</label>
-            <select [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
+            <select class="select" [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
 
                 <option value="01" [disabled]="yay_type === '775'">01</option>
                 <option value="02">02</option>
@@ -174,10 +174,9 @@
             <input type="number" [(ngModel)]="quantity"/>
     </div>
 
-    
-    <div class="row">
-        <button (click)="produce_items()">Üretim</button>
-    </div>
+        
+        <button class="submit"  [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0" (click)="produce_items()">Üretim</button>
+
 
     </ng-template>
 
@@ -445,9 +444,8 @@
                 <input type="checkbox" [(ngModel)]="plaka"/> 
         </div>
 
-        <div class="row">
-            <button (click)="sell_items()">Satış</button>
-        </div>
+            <button class="submit" [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0" (click)="sell_items()">Satış</button>
+
     
         </ng-template>
 </div>

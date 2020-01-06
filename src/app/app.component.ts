@@ -93,6 +93,13 @@ export class AppComponent implements OnInit{
     this.get_stock();
 
   }
+
+  checkValues() {
+    if (this.yay_type === '775' && (this.yay_size === 1 || this.yay_size === 9 ) ) {
+      return false;
+    }
+    return true;
+  }
   
   goToReadyStock() {
     // API CAll get ready stock
@@ -150,7 +157,12 @@ export class AppComponent implements OnInit{
   }
 
   sell_items() {
-    if (this.quantity !== 0) {
+    if (this.checkValues()) {
+      alert("Lütfen Yay Tipini ve Boyunu Kontrol Ediniz");
+      this.clear_sell_values();
+      this.goToStock();
+      this.goToSell();
+    } else if (this.quantity !== 0) {
 
       this.data.buy_items(this.format_sale_data()).then((res) => {
         console.log(res);
@@ -185,7 +197,12 @@ export class AppComponent implements OnInit{
 
   produce_items() {
     // API call to produce items
-    if (this.quantity !== 0) {
+    if (this.checkValues()) {
+      alert("Lütfen Yay Tipini ve Boyunu Kontrol Ediniz");
+      this.clear_produce_values();
+      this.goToStock();
+      this.goToProducing();
+    } else if (this.quantity !== 0) {
 
       this.data.buy_items(this.format_production_data()).then((res) => {
         console.log(res);
