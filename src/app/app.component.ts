@@ -146,6 +146,7 @@ export class AppComponent implements OnInit{
     this.ready = false;
     this.stock = true;
     this.producing = false;
+    this.sell = false;
   }
 
   sell_items() {

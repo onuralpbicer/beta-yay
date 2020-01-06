@@ -1,15 +1,16 @@
 
 
-<button (click)='goToBuy()' [disabled]='buying'>Alıma Git</button>
-<button (click)='goToProducing()' [disabled]='producing'>Üretime Git</button>
-<button (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
-<button (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
-<button (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
+<button class="button" (click)='goToBuy()' [disabled]='buying'>Alıma Git</button>
+<button class="button" (click)='goToProducing()' [disabled]='producing'>Üretime Git</button>
+<button class="button" (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
+<button class="button" (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
+<button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
 
 <!-- <button (click)="testing()">test</button> -->
 <div>
     <ng-template [ngIf]='buying'>
     <!-- Code for when you're buying -->
+    <h1>Alım</h1>
     <div class="row">
             <div class="col">
                 <label >770-01(yay)</label> 
@@ -140,6 +141,7 @@
 
     <ng-template [ngIf]='producing'>
     <!-- Code for when you're producing -->
+    <h1>Üretim</h1>
     <div class="row">
         <label>Yay Tipi</label>
             <select [(ngModel)]="yay_type">
@@ -188,6 +190,7 @@
 
     <ng-template [ngIf]='stock'>
     <!-- Code for when you're showing stock-->
+    <h1>Ham Yay Stoğu</h1>
     <div class="row">
             <div class="col">
                 <label >770-01(yay)</label> 
@@ -404,6 +407,7 @@
 
     <ng-template [ngIf]='sell'>
         <!-- Code for when you're producing -->
+        <h1>Satış</h1>
         <div class="row">
             <label>Yay Tipi</label>
                 <select [(ngModel)]="yay_type">
