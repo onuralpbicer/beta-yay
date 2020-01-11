@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
   ready = false;
   sell = false;
 
+  sirket_ismi:string;
   yay_type:string;
   yay_size:number;
   plaka = false;
@@ -96,9 +97,9 @@ export class AppComponent implements OnInit{
 
   checkValues() {
     if (this.yay_type === '775' && (this.yay_size === 1 || this.yay_size === 9 ) ) {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
   
   goToReadyStock() {
@@ -139,6 +140,7 @@ export class AppComponent implements OnInit{
   }
 
   clear_sell_values() {
+    this.sirket_ismi = undefined;
     this.yay_type = undefined;
     this.yay_size = undefined;
     this.quantity = 0;
@@ -187,7 +189,7 @@ export class AppComponent implements OnInit{
       );
     } else {
       alert("Lütfen Adet Giriniz");
-      this.clear_produce_values();
+      this.clear_sell_values();
       this.goToStock();
       this.goToSell();
     }
@@ -235,6 +237,8 @@ export class AppComponent implements OnInit{
 
   format_sale_data() {
     return {
+      'sirket_ismi':this.sirket_ismi,
+      'timestamp':Date.now(),
       'sell':true,
       'buy':false,
       'type': this.yay_type,
@@ -246,6 +250,7 @@ export class AppComponent implements OnInit{
 
   format_production_data() {
     return {
+      'timestamp':Date.now(),
       'sell':false,
       'buy':false,
       'type': this.yay_type,
@@ -278,8 +283,25 @@ export class AppComponent implements OnInit{
     );
   }
 
+  test() {
+    this.data.test_items().then(
+      (res) => {
+        console.log(res);
+
+      },
+      (res) => {
+        console.log(res);
+
+      }
+    );
+    
+
+  }
+
   format_data() {
     return {
+      'sirket_ismi':this.sirket_ismi,
+      'timestamp':Date.now(),
       'sell':false,
       'buy':true,
       'items':[
@@ -378,6 +400,8 @@ export class AppComponent implements OnInit{
  
 
   clear_buy_values() {
+    this.sirket_ismi = undefined;
+
     this.buy_77001 = 0;
     this.buy_77002 = 0;
     this.buy_77003 = 0;

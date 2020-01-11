@@ -49,6 +49,25 @@ export class DataService {
     return promise;
 
   }
+  test_items():Promise <any> {
+    var promise = new Promise<any> ((resolve, reject) => {
+      console.log("Calling api");
+      this.http.get(this.api_url + 'log').toPromise().then(
+        (res:any) => {
+          console.log("Success");
+          // console.log(res['body']['Items']);
+          resolve(res);
+        },
+        (res:any) => {
+          console.log("Error");
+          console.log(res);
+          reject(res);
+        }
+      );
+    });
+    return promise;
+
+  }
 
   sell_items(items):Promise<any> {
     var promise = new Promise<any> ((resolve, reject) => {

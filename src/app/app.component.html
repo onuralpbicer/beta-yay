@@ -5,6 +5,7 @@
 <button class="button" (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
 <button class="button" (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
 <button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
+<!-- <button (click)="test()">test</button> -->
 
 <!-- <button (click)="testing()">test</button> -->
 <div>
@@ -128,7 +129,11 @@
             </div>
         </div>
         <div class="row">
-            <button class="submit" (click)="add_items()">Alım</button>
+            <label >Şirket İsmi</label>
+            <input type="text" [(ngModel)]="sirket_ismi"/>
+        </div>
+        <div class="row">
+            <button class="submit" [disabled]="sirket_ismi === undefined" (click)="add_items()">Alım</button>
         </div>
     </ng-template>
 
@@ -409,7 +414,7 @@
         <h1>Satış</h1>
         <div class="row">
             <label>Yay Tipi</label>
-                <select [(ngModel)]="yay_type">
+                <select class="select" [(ngModel)]="yay_type">
     
                     <option value="770">770</option>
                     <option value="775">775</option>
@@ -418,7 +423,7 @@
         </div>
         <div class="row">
             <label>Yay Boyu</label>
-                <select [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
+                <select class="select" [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
     
                     <option value="01" [disabled]="yay_type === '775'">01</option>
                     <option value="02">02</option>
@@ -443,8 +448,12 @@
             <label>Plaka</label>
                 <input type="checkbox" [(ngModel)]="plaka"/> 
         </div>
+        <div class="row">
+            <label >Şirket İsmi</label>
+            <input type="text" [(ngModel)]="sirket_ismi"/>
+        </div>
 
-            <button class="submit" [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0" (click)="sell_items()">Satış</button>
+            <button class="submit" [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0 || sirket_ismi === undefined" (click)="sell_items()">Satış</button>
 
     
         </ng-template>
