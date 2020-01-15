@@ -36,7 +36,7 @@ export class DataService {
       this.http.get(this.api_url + 'list').toPromise().then(
         (res:any) => {
           console.log("Success");
-          // console.log(res['body']['Items']);
+          // console.log(res['body']);
           resolve(this.fix_output(res['body']['Items']));
         },
         (res:any) => {
@@ -117,6 +117,23 @@ export class DataService {
 
     return list;
 
+  }
+  get_logs(date_begin?:any,date_end?:any):Promise<any> {
+    var promise = new Promise<any> ((resolve, reject) => {
+      console.log("Calling api");
+      this.http.get(this.api_url + 'log?date_begin=' + date_begin + '&date_end=' + date_end).toPromise().then(
+        (res:any) => {
+          console.log("Success");
+          resolve(res);
+        },
+        (res:any) => {
+          console.log("Error");
+          console.log(res);
+          reject(res);
+        }
+      );
+    });
+    return promise;
   }
 
 }

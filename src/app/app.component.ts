@@ -9,15 +9,19 @@ import { DataService } from './data.service';
 export class AppComponent implements OnInit{
   buying = false;
   producing = false;
-  stock = true;
+  stock = false; // change
   ready = false;
   sell = false;
+  log = true;
 
   sirket_ismi:string;
   yay_type:string;
   yay_size:number;
   plaka = false;
   quantity = 0;
+
+  date_begin:any;
+  date_end:any;
 
   buy_77001 = 0;
   buy_77002 = 0;
@@ -110,10 +114,12 @@ export class AppComponent implements OnInit{
     this.producing = false;
     this.ready = true;
     this.sell = false;
+    this.log = false;
   }
   
   goToBuy() {
     this.clear_buy_values();
+    this.log = false;
     this.buying = true;
     this.stock = false;
     this.ready = false;
@@ -123,6 +129,7 @@ export class AppComponent implements OnInit{
   
   goToProducing() {
     this.clear_produce_values();
+    this.log = false;
     this.buying = false;
     this.stock = false;
     this.ready = false;
@@ -132,6 +139,7 @@ export class AppComponent implements OnInit{
 
   goToSell() {
     this.clear_sell_values();
+    this.log = false;
     this.buying = false;
     this.stock = false;
     this.ready = false;
@@ -150,12 +158,28 @@ export class AppComponent implements OnInit{
   goToStock() {
     // API call to get stock
     this.get_stock();
-
+    this.log = false;
     this.buying = false;
     this.ready = false;
     this.stock = true;
     this.producing = false;
     this.sell = false;
+  }
+
+  goToLog() {
+    this.clear_log_values();
+    this.log = true;
+    this.buying = false;
+    this.ready = false;
+    this.stock = false;
+    this.producing = false;
+    this.sell = false;
+
+  }
+
+  clear_log_values() {
+    this.date_begin = undefined;
+    this.date_end = undefined;
   }
 
   sell_items() {
@@ -284,18 +308,7 @@ export class AppComponent implements OnInit{
   }
 
   test() {
-    this.data.test_items().then(
-      (res) => {
-        console.log(res);
-
-      },
-      (res) => {
-        console.log(res);
-
-      }
-    );
-    
-
+    console.log(Date().toString());
   }
 
   format_data() {
@@ -524,6 +537,29 @@ export class AppComponent implements OnInit{
 
     );
 
+  }
+  get_all_logs() {
+    this.data.get_logs(undefined, undefined).then(
+      (res) => {
+        console.log(res);
+      },
+      (res) => {
+        console.log(res);
+        console.log('error');
+      }
+    );
+  }
+
+  get_log_with_date() {
+    this.data.get_logs(this.date_begin, this.date_end).then(
+      (res) => {
+        console.log(res);
+      },
+      (res) => {
+        console.log(res);
+        console.log('error');
+      }
+    );
   }
   
 }

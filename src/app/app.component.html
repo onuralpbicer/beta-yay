@@ -5,7 +5,8 @@
 <button class="button" (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
 <button class="button" (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
 <button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
-<!-- <button (click)="test()">test</button> -->
+<button class="button" (click)='goToLog()' [disabled]='log'>Takipe Git</button>
+<button (click)="test()">test</button>
 
 <!-- <button (click)="testing()">test</button> -->
 <div>
@@ -132,9 +133,9 @@
             <label >Şirket İsmi</label>
             <input type="text" [(ngModel)]="sirket_ismi"/>
         </div>
-        <div class="row">
-            <button class="submit" [disabled]="sirket_ismi === undefined" (click)="add_items()">Alım</button>
-        </div>
+        
+        <button class="submit" [disabled]="sirket_ismi === undefined" (click)="add_items()">Alım</button>
+        
     </ng-template>
 
 
@@ -456,5 +457,24 @@
             <button class="submit" [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0 || sirket_ismi === undefined" (click)="sell_items()">Satış</button>
 
     
+        </ng-template>
+
+        <ng-template [ngIf]='log'>
+            <div class="row">
+                <div class="col">
+                    <label>Başlangıç Tarihi</label>
+                    <input type="date" [(ngModel)]="date_begin"/> 
+                </div>
+
+                <div class="col">
+                    <label>Bitiş Tarihi</label>
+                    <input type="date" [(ngModel)]="date_end"/> 
+                </div>
+
+            </div>
+
+            <button class=submit (click)="get_log_with_date()" [disabled]="date_begin === undefined || date_end === undefined || date_begin > date_end">Tarih Takibi</button><br>
+            <button class=submit (click)="get_all_logs()">Bütün Zaman Takibi</button>
+
         </ng-template>
 </div>
