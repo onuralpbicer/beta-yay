@@ -6,7 +6,7 @@
     <button class="button" (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
     <button class="button" (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
     <button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
-    <button class="button" (click)='goToLog()' [disabled]='log'>Takibe Git</button>
+    <button class="button" (click)='goToLog()' [disabled]='log'>Raporlamaya Git</button>
     <button class="button" (click)='goToAddUser()' [disabled]='add' *ngIf='username === "onuralpbicer" || username === "soner"'>Add User</button>
     <!-- <button (click)="test()">test</button> -->
 
@@ -464,7 +464,7 @@
 
             <ng-template [ngIf]='log'>
                 <!-- Code for logs -->
-                <h1>Alım Satış ve Üretim Takibi</h1>
+                <h1>Alım Satış ve Üretim Raporlaması</h1>
                 <div class="row">
                     <div class="col">
                         <label>Başlangıç Tarihi</label>
@@ -478,8 +478,8 @@
 
                 </div>
 
-                <button class=submit (click)="get_log_with_date()" [disabled]="date_begin === undefined || date_end === undefined || date_begin > date_end">Tarih Takibi</button><br>
-                <button class=submit (click)="get_all_logs()">Bütün Zaman Takibi</button>
+                <button class=submit (click)="get_log_with_date()" [disabled]="date_begin === undefined || date_end === undefined || date_begin > date_end">Tarih Raporu</button><br>
+                <button class=submit (click)="get_all_logs()">Bütün Zaman Raporu</button>
 
                 
                 <div class="row" style="margin-top:10px;" >
