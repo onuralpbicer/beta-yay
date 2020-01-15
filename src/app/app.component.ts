@@ -12,12 +12,16 @@ export class AppComponent implements OnInit{
   username:string = undefined;
   password:string = undefined;
 
+  new_user:string = undefined;
+  new_pass:string = undefined;
+
   buying = false;
   producing = false;
   stock = true; // change
   ready = false;
   sell = false;
   log = false;
+  add = false;
 
   sirket_ismi:string;
   yay_type:string;
@@ -115,6 +119,7 @@ export class AppComponent implements OnInit{
   goToReadyStock() {
     // API CAll get ready stock
     this.get_ready_stock();
+    this.add = false;
     this.buying = false;
     this.stock = false;
     this.producing = false;
@@ -125,6 +130,7 @@ export class AppComponent implements OnInit{
   
   goToBuy() {
     this.clear_buy_values();
+    this.add = false;
     this.log = false;
     this.buying = true;
     this.stock = false;
@@ -135,6 +141,7 @@ export class AppComponent implements OnInit{
   
   goToProducing() {
     this.clear_produce_values();
+    this.add = false;
     this.log = false;
     this.buying = false;
     this.stock = false;
@@ -145,6 +152,7 @@ export class AppComponent implements OnInit{
 
   goToSell() {
     this.clear_sell_values();
+    this.add = false;
     this.log = false;
     this.buying = false;
     this.stock = false;
@@ -164,6 +172,7 @@ export class AppComponent implements OnInit{
   goToStock() {
     // API call to get stock
     this.get_stock();
+    this.add = false;
     this.log = false;
     this.buying = false;
     this.ready = false;
@@ -174,6 +183,7 @@ export class AppComponent implements OnInit{
 
   goToLog() {
     this.clear_log_values();
+    this.add = false;
     this.log = true;
     this.buying = false;
     this.ready = false;
@@ -181,6 +191,24 @@ export class AppComponent implements OnInit{
     this.producing = false;
     this.sell = false;
 
+  } 
+
+  goToAddUser() {
+    this.clear_add_values();
+    
+    this.add = true;
+    this.log = false;
+    this.buying = false;
+    this.ready = false;
+    this.stock = false;
+    this.producing = false;
+    this.sell = false;
+
+  }
+
+  clear_add_values() {
+    this.new_pass = undefined;
+    this.new_user = undefined;
   }
 
   clear_log_values() {
@@ -601,7 +629,23 @@ export class AppComponent implements OnInit{
       }
 
     );
+  }
 
+  add_user() {
+    this.data.signup(this.new_user, this.new_pass).then(
+      (res) => {
+        console.log(res);
+        console.log('success');
+        alert("Kullanıcı Ekleme Başarılı");
+        this.clear_add_values();
+      },
+      (res) => {
+        console.log(res);
+        console.log('error');
+        alert("Hata");
+      }
+
+    );
   }
   
 }

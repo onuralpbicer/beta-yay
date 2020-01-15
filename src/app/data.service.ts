@@ -6,7 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class DataService {
 
-  api_url = 'https://9uj5kwwke4.execute-api.ap-southeast-2.amazonaws.com/dev/';
+  api_url = 'https://9uj5kwwke4.execute-api.ap-southeast-2.amazonaws.com/prod/';
 
   constructor(private http:HttpClient) { }
 
@@ -155,6 +155,24 @@ export class DataService {
         },
         (res:any) => {
           console.log("Error");
+          reject(res);
+        }
+      );
+    });
+    return promise;
+  }
+
+  signup(user:string, pass:string):Promise<any> {
+    var promise = new Promise<any> ((resolve, reject) => {
+      console.log("Calling api");
+      this.http.post(this.api_url + 'add',{"username": user, "password": pass}).toPromise().then(
+        (res:any) => {
+          console.log("Success");
+          resolve(res);
+        },
+        (res:any) => {
+          console.log("Error");
+          console.log(res);
           reject(res);
         }
       );

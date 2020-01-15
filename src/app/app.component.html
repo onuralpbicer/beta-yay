@@ -6,7 +6,8 @@
     <button class="button" (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
     <button class="button" (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
     <button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
-    <button class="button" (click)='goToLog()' [disabled]='log'>Takipe Git</button>
+    <button class="button" (click)='goToLog()' [disabled]='log'>Takibe Git</button>
+    <button class="button" (click)='goToAddUser()' [disabled]='add' *ngIf='username === "onuralpbicer" || username === "soner"'>Add User</button>
     <!-- <button (click)="test()">test</button> -->
 
     <div>
@@ -500,6 +501,23 @@
                         </ng-container>
                     </table>
                 </div>
+
+            </ng-template>
+
+
+            <ng-template [ngIf]='add'>
+                <!-- Code for adding user -->
+                <h1>Kullanıcı Ekle</h1>
+                <div class="row">
+                    <label>Kullanıcı Adı</label>
+                    <input type="text" [(ngModel)]="new_user"/>
+                </div>
+                <div class="row">
+                    <label>Şifre</label>
+                    <input type="password" [(ngModel)]="new_pass"/>
+                </div>
+                <button class=submit (click)="add_user()" [disabled]="username === undefined || password === undefined">Ekle</button>
+
 
             </ng-template>
     </div>
