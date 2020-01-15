@@ -124,11 +124,37 @@ export class DataService {
       this.http.get(this.api_url + 'log?date_begin=' + date_begin + '&date_end=' + date_end).toPromise().then(
         (res:any) => {
           console.log("Success");
-          resolve(res);
+          for (let item of res.body) {
+            item['date'] = new Date(item['date']).toLocaleDateString();
+          }
+          resolve(res.body);
         },
         (res:any) => {
           console.log("Error");
           console.log(res);
+          reject(res);
+        }
+      );
+    });
+    return promise;
+  }
+
+  login(username:string, password:string):Promise<any> {
+    var promise = new Promise<any> ((resolve, reject) => {
+      console.log("Calling api");
+      this.http.get(this.api_url + 'login?username=' + username + '&password=' + password).toPromise().then(
+        (res:any) => {
+          if (res.statusCode != 200) {
+            console.log("Error");
+            reject(res);
+          }
+          else {
+            console.log("Success");
+            resolve(res);
+          }
+        },
+        (res:any) => {
+          console.log("Error");
           reject(res);
         }
       );

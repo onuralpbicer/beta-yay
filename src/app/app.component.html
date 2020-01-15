@@ -1,142 +1,142 @@
+<!-- <button (click)="login()">test</button> --> 
 
+<ng-template [ngIf]='logged'>
+    <button class="button" (click)='goToBuy()' [disabled]='buying'>Alıma Git</button>
+    <button class="button" (click)='goToProducing()' [disabled]='producing'>Üretime Git</button>
+    <button class="button" (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
+    <button class="button" (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
+    <button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
+    <button class="button" (click)='goToLog()' [disabled]='log'>Takipe Git</button>
+    <!-- <button (click)="test()">test</button> -->
 
-<button class="button" (click)='goToBuy()' [disabled]='buying'>Alıma Git</button>
-<button class="button" (click)='goToProducing()' [disabled]='producing'>Üretime Git</button>
-<button class="button" (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
-<button class="button" (click)='goToReadyStock()' [disabled]='ready'>Hazır Stoğa Git</button>
-<button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
-<button class="button" (click)='goToLog()' [disabled]='log'>Takipe Git</button>
-<button (click)="test()">test</button>
-
-<!-- <button (click)="testing()">test</button> -->
-<div>
-    <ng-template [ngIf]='buying'>
-    <!-- Code for when you're buying -->
-    <h1>Alım</h1>
-    <div class="row">
-            <div class="col">
-                <label >770-01(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77001"/>
-            </div>
-            <div class="col">
-            </div>
-        </div>
+    <div>
+        <ng-template [ngIf]='buying'>
+        <!-- Code for when you're buying -->
+        <h1>Alım</h1>
         <div class="row">
-            <div class="col">
-                <label >770-02(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77002"/> 
+                <div class="col">
+                    <label >770-01(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77001"/>
+                </div>
+                <div class="col">
+                </div>
             </div>
-            <div class="col">
-                <label >775-02(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77502"/>
+            <div class="row">
+                <div class="col">
+                    <label >770-02(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77002"/> 
+                </div>
+                <div class="col">
+                    <label >775-02(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77502"/>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-03(yay)</label> 
-                <input type="number" placeholder="0"  [(ngModel)]="buy_77003"/> 
+            <div class="row">
+                <div class="col">
+                    <label >770-03(yay)</label> 
+                    <input type="number" placeholder="0"  [(ngModel)]="buy_77003"/> 
+                </div>
+                <div class="col">
+                    <label >775-03(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77503"/>
+                </div>
             </div>
-            <div class="col">
-                <label >775-03(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77503"/>
+            <div class="row">
+                <div class="col">
+                    <label >770-04(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77004"/> 
+                </div>
+                <div class="col">
+                    <label >775-04(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77504"/>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-04(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77004"/> 
+            <div class="row">
+                <div class="col">
+                    <label >770-05(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77005"/> 
+                </div>
+                <div class="col">
+                    <label >775-05(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77505"/>
+                </div>
             </div>
-            <div class="col">
-                <label >775-04(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77504"/>
+            <div class="row">
+                <div class="col">
+                    <label >770-06(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77006"/> 
+                </div>
+                <div class="col">
+                    <label >775-06(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77506"/>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-05(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77005"/> 
+            <div class="row">
+                <div class="col">
+                    <label >770-07(yay)</label> 
+                    <input type="number" placeholder="0"  [(ngModel)]="buy_77007"/> 
+                </div>
+                <div class="col">
+                    <label >775-07(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77507"/>
+                </div>
             </div>
-            <div class="col">
-                <label >775-05(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77505"/>
+            <div class="row">
+                <div class="col">
+                    <label >770-08(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77008"/> 
+                </div>
+                <div class="col">
+                    <label >775-08(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77508"/>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-06(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77006"/> 
+            <div class="row">
+                <div class="col">
+                    <label >770-09(yay)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_77009"/> 
+                </div>
+                <div class="col">
+                </div>
             </div>
-            <div class="col">
-                <label >775-06(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77506"/>
+            <div class="row">
+                <div class="col">
+                    <label >770(perçin)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_770percin"/> 
+                </div>
+                <div class="col">
+                    <label >775(perçin)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_775percin"/> 
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-07(yay)</label> 
-                <input type="number" placeholder="0"  [(ngModel)]="buy_77007"/> 
+            <div class="row">
+                <div class="col">
+                    <label >770(kapak)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_770kapak"/> 
+                </div>
+                <div class="col">
+                    <label >775(kapak)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_775kapak"/> 
+                </div>
             </div>
-            <div class="col">
-                <label >775-07(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77507"/>
+            <div class="row">
+                <div class="col">
+                    <label >770(plaka)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_770plaka"/> 
+                </div>
+                <div class="col">
+                    <label >775(plaka)</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_775plaka"/> 
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-08(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77008"/> 
+            <div class="row">
+                <label >Şirket İsmi</label>
+                <input type="text" [(ngModel)]="sirket_ismi"/>
             </div>
-            <div class="col">
-                <label >775-08(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77508"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-09(yay)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_77009"/> 
-            </div>
-            <div class="col">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770(perçin)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_770percin"/> 
-            </div>
-            <div class="col">
-                <label >775(perçin)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_775percin"/> 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770(kapak)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_770kapak"/> 
-            </div>
-            <div class="col">
-                <label >775(kapak)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_775kapak"/> 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770(plaka)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_770plaka"/> 
-            </div>
-            <div class="col">
-                <label >775(plaka)</label> 
-                <input type="number" placeholder="0" [(ngModel)]="buy_775plaka"/> 
-            </div>
-        </div>
-        <div class="row">
-            <label >Şirket İsmi</label>
-            <input type="text" [(ngModel)]="sirket_ismi"/>
-        </div>
-        
-        <button class="submit" [disabled]="sirket_ismi === undefined" (click)="add_items()">Alım</button>
-        
-    </ng-template>
+            
+            <button class="submit" [disabled]="sirket_ismi === undefined" (click)="add_items()">Alım</button>
+            
+        </ng-template>
 
 
 
@@ -145,287 +145,22 @@
 
 
 
-    <ng-template [ngIf]='producing'>
-    <!-- Code for when you're producing -->
-    <h1>Üretim</h1>
-    <div class="row">
-        <label>Yay Tipi</label>
-            <select class="select" [(ngModel)]="yay_type">
-
-                <option value="770">770</option>
-                <option value="775">775</option>
-
-            </select>
-    </div>
-    <div class="row">
-        <label>Yay Boyu</label>
-            <select class="select" [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
-
-                <option value="01" [disabled]="yay_type === '775'">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09" [disabled]="yay_type === '775'">09</option>
-
-                
-            </select> 
-    </div>
-    
-    <div class="row">
-        <label>Adet</label>
-            <input type="number" [(ngModel)]="quantity"/>
-    </div>
-
-        
-        <button class="submit"  [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0" (click)="produce_items()">Üretim</button>
-
-
-    </ng-template>
-
-
-
-
-
-
-
-
-    <ng-template [ngIf]='stock'>
-    <!-- Code for when you're showing stock-->
-    <h1>Ham Yay Stoğu</h1>
-    <div class="row">
-            <div class="col">
-                <label >770-01(yay)</label> 
-                <input type="number" placeholder="{{stock_77001}}" disabled/>
-            </div>
-            <div class="col">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-02(yay)</label> 
-                <input type="number" placeholder="{{stock_77002}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-02(yay)</label> 
-                <input type="number" placeholder="{{stock_77502}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-03(yay)</label> 
-                <input type="number" placeholder="{{stock_77003}}"  disabled/> 
-            </div>
-            <div class="col">
-                <label >775-03(yay)</label> 
-                <input type="number" placeholder="{{stock_77503}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-04(yay)</label> 
-                <input type="number" placeholder="{{stock_77004}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-04(yay)</label> 
-                <input type="number" placeholder="{{stock_77504}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-05(yay)</label> 
-                <input type="number" placeholder="{{stock_77005}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-05(yay)</label> 
-                <input type="number" placeholder="{{stock_77505}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-06(yay)</label> 
-                <input type="number" placeholder="{{stock_77006}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-06(yay)</label> 
-                <input type="number" placeholder="{{stock_77506}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-07(yay)</label> 
-                <input type="number" placeholder="{{stock_77007}}"  disabled/> 
-            </div>
-            <div class="col">
-                <label >775-07(yay)</label> 
-                <input type="number" placeholder="{{stock_77507}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-08(yay)</label> 
-                <input type="number" placeholder="{{stock_77008}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-08(yay)</label> 
-                <input type="number" placeholder="{{stock_77508}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-09(yay)</label> 
-                <input type="number" placeholder="{{stock_77009}}" disabled/> 
-            </div>
-            <div class="col">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770(perçin)</label> 
-                <input type="number" placeholder="{{stock_770percin}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775(perçin)</label> 
-                <input type="number" placeholder="{{stock_775percin}}" disabled/> 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770(kapak)</label> 
-                <input type="number" placeholder="{{stock_770kapak}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775(kapak)</label> 
-                <input type="number" placeholder="{{stock_775kapak}}" disabled/> 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770(plaka)</label> 
-                <input type="number" placeholder="{{stock_770plaka}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775(plaka)</label> 
-                <input type="number" placeholder="{{stock_775plaka}}" disabled/> 
-            </div>
-        </div>
-    </ng-template>
-
-
-
-
-    <ng-template [ngIf]='ready'>
-        <h1>Hazır Yaylar</h1>
-        <div class="row">
-            <div class="col">
-                <label >770-01(yay)</label> 
-                <input type="number" placeholder="{{ready_77001}}" disabled/>
-            </div>
-            <div class="col">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-02(yay)</label> 
-                <input type="number" placeholder="{{ready_77002}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-02(yay)</label> 
-                <input type="number" placeholder="{{ready_77502}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-03(yay)</label> 
-                <input type="number" placeholder="{{ready_77003}}"  disabled/> 
-            </div>
-            <div class="col">
-                <label >775-03(yay)</label> 
-                <input type="number" placeholder="{{ready_77503}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-04(yay)</label> 
-                <input type="number" placeholder="{{ready_77004}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-04(yay)</label> 
-                <input type="number" placeholder="{{ready_77504}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-05(yay)</label> 
-                <input type="number" placeholder="{{ready_77005}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-05(yay)</label> 
-                <input type="number" placeholder="{{ready_77505}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-06(yay)</label> 
-                <input type="number" placeholder="{{ready_77006}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-06(yay)</label> 
-                <input type="number" placeholder="{{ready_77506}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-07(yay)</label> 
-                <input type="number" placeholder="{{ready_77007}}"  disabled/> 
-            </div>
-            <div class="col">
-                <label >775-07(yay)</label> 
-                <input type="number" placeholder="{{ready_77507}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-08(yay)</label> 
-                <input type="number" placeholder="{{ready_77008}}" disabled/> 
-            </div>
-            <div class="col">
-                <label >775-08(yay)</label> 
-                <input type="number" placeholder="{{ready_77508}}" disabled/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label >770-09(yay)</label> 
-                <input type="number" placeholder="{{ready_77009}}" disabled/> 
-            </div>
-            <div class="col">
-            </div>
-        </div>
-        
-    </ng-template>
-
-
-
-    <ng-template [ngIf]='sell'>
+        <ng-template [ngIf]='producing'>
         <!-- Code for when you're producing -->
-        <h1>Satış</h1>
+        <h1>Üretim</h1>
         <div class="row">
             <label>Yay Tipi</label>
                 <select class="select" [(ngModel)]="yay_type">
-    
+
                     <option value="770">770</option>
                     <option value="775">775</option>
-    
+
                 </select>
         </div>
         <div class="row">
             <label>Yay Boyu</label>
                 <select class="select" [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
-    
+
                     <option value="01" [disabled]="yay_type === '775'">01</option>
                     <option value="02">02</option>
                     <option value="03">03</option>
@@ -435,7 +170,7 @@
                     <option value="07">07</option>
                     <option value="08">08</option>
                     <option value="09" [disabled]="yay_type === '775'">09</option>
-    
+
                     
                 </select> 
         </div>
@@ -444,37 +179,341 @@
             <label>Adet</label>
                 <input type="number" [(ngModel)]="quantity"/>
         </div>
-    
-        <div class="row">
-            <label>Plaka</label>
-                <input type="checkbox" [(ngModel)]="plaka"/> 
-        </div>
-        <div class="row">
-            <label >Şirket İsmi</label>
-            <input type="text" [(ngModel)]="sirket_ismi"/>
-        </div>
 
-            <button class="submit" [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0 || sirket_ismi === undefined" (click)="sell_items()">Satış</button>
+            
+            <button class="submit"  [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0" (click)="produce_items()">Üretim</button>
 
-    
+
         </ng-template>
 
-        <ng-template [ngIf]='log'>
+
+
+
+
+
+
+
+        <ng-template [ngIf]='stock'>
+        <!-- Code for when you're showing stock-->
+        <h1>Ham Yay Stoğu</h1>
+        <div class="row">
+                <div class="col">
+                    <label >770-01(yay)</label> 
+                    <input type="number" placeholder="{{stock_77001}}" disabled/>
+                </div>
+                <div class="col">
+                </div>
+            </div>
             <div class="row">
                 <div class="col">
-                    <label>Başlangıç Tarihi</label>
-                    <input type="date" [(ngModel)]="date_begin"/> 
+                    <label >770-02(yay)</label> 
+                    <input type="number" placeholder="{{stock_77002}}" disabled/> 
                 </div>
-
                 <div class="col">
-                    <label>Bitiş Tarihi</label>
-                    <input type="date" [(ngModel)]="date_end"/> 
+                    <label >775-02(yay)</label> 
+                    <input type="number" placeholder="{{stock_77502}}" disabled/>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-03(yay)</label> 
+                    <input type="number" placeholder="{{stock_77003}}"  disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-03(yay)</label> 
+                    <input type="number" placeholder="{{stock_77503}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-04(yay)</label> 
+                    <input type="number" placeholder="{{stock_77004}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-04(yay)</label> 
+                    <input type="number" placeholder="{{stock_77504}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-05(yay)</label> 
+                    <input type="number" placeholder="{{stock_77005}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-05(yay)</label> 
+                    <input type="number" placeholder="{{stock_77505}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-06(yay)</label> 
+                    <input type="number" placeholder="{{stock_77006}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-06(yay)</label> 
+                    <input type="number" placeholder="{{stock_77506}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-07(yay)</label> 
+                    <input type="number" placeholder="{{stock_77007}}"  disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-07(yay)</label> 
+                    <input type="number" placeholder="{{stock_77507}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-08(yay)</label> 
+                    <input type="number" placeholder="{{stock_77008}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-08(yay)</label> 
+                    <input type="number" placeholder="{{stock_77508}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-09(yay)</label> 
+                    <input type="number" placeholder="{{stock_77009}}" disabled/> 
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770(perçin)</label> 
+                    <input type="number" placeholder="{{stock_770percin}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775(perçin)</label> 
+                    <input type="number" placeholder="{{stock_775percin}}" disabled/> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770(kapak)</label> 
+                    <input type="number" placeholder="{{stock_770kapak}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775(kapak)</label> 
+                    <input type="number" placeholder="{{stock_775kapak}}" disabled/> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770(plaka)</label> 
+                    <input type="number" placeholder="{{stock_770plaka}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775(plaka)</label> 
+                    <input type="number" placeholder="{{stock_775plaka}}" disabled/> 
+                </div>
+            </div>
+        </ng-template>
 
+
+
+
+        <ng-template [ngIf]='ready'>
+            <h1>Hazır Yaylar</h1>
+            <div class="row">
+                <div class="col">
+                    <label >770-01(yay)</label> 
+                    <input type="number" placeholder="{{ready_77001}}" disabled/>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-02(yay)</label> 
+                    <input type="number" placeholder="{{ready_77002}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-02(yay)</label> 
+                    <input type="number" placeholder="{{ready_77502}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-03(yay)</label> 
+                    <input type="number" placeholder="{{ready_77003}}"  disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-03(yay)</label> 
+                    <input type="number" placeholder="{{ready_77503}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-04(yay)</label> 
+                    <input type="number" placeholder="{{ready_77004}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-04(yay)</label> 
+                    <input type="number" placeholder="{{ready_77504}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-05(yay)</label> 
+                    <input type="number" placeholder="{{ready_77005}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-05(yay)</label> 
+                    <input type="number" placeholder="{{ready_77505}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-06(yay)</label> 
+                    <input type="number" placeholder="{{ready_77006}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-06(yay)</label> 
+                    <input type="number" placeholder="{{ready_77506}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-07(yay)</label> 
+                    <input type="number" placeholder="{{ready_77007}}"  disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-07(yay)</label> 
+                    <input type="number" placeholder="{{ready_77507}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-08(yay)</label> 
+                    <input type="number" placeholder="{{ready_77008}}" disabled/> 
+                </div>
+                <div class="col">
+                    <label >775-08(yay)</label> 
+                    <input type="number" placeholder="{{ready_77508}}" disabled/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label >770-09(yay)</label> 
+                    <input type="number" placeholder="{{ready_77009}}" disabled/> 
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            
+        </ng-template>
+
+
+
+        <ng-template [ngIf]='sell'>
+            <!-- Code for when you're producing -->
+            <h1>Satış</h1>
+            <div class="row">
+                <label>Yay Tipi</label>
+                    <select class="select" [(ngModel)]="yay_type">
+        
+                        <option value="770">770</option>
+                        <option value="775">775</option>
+        
+                    </select>
+            </div>
+            <div class="row">
+                <label>Yay Boyu</label>
+                    <select class="select" [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
+        
+                        <option value="01" [disabled]="yay_type === '775'">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09" [disabled]="yay_type === '775'">09</option>
+        
+                        
+                    </select> 
+            </div>
+            
+            <div class="row">
+                <label>Adet</label>
+                    <input type="number" [(ngModel)]="quantity"/>
+            </div>
+        
+            <div class="row">
+                <label>Plaka</label>
+                    <input type="checkbox" [(ngModel)]="plaka"/> 
+            </div>
+            <div class="row">
+                <label >Şirket İsmi</label>
+                <input type="text" [(ngModel)]="sirket_ismi"/>
             </div>
 
-            <button class=submit (click)="get_log_with_date()" [disabled]="date_begin === undefined || date_end === undefined || date_begin > date_end">Tarih Takibi</button><br>
-            <button class=submit (click)="get_all_logs()">Bütün Zaman Takibi</button>
+                <button class="submit" [disabled]="yay_type === undefined || yay_size === undefined || quantity === 0 || sirket_ismi === undefined" (click)="sell_items()">Satış</button>
 
-        </ng-template>
-</div>
+        
+            </ng-template>
+
+
+
+            <ng-template [ngIf]='log'>
+                <!-- Code for logs -->
+                <h1>Alım Satış ve Üretim Takibi</h1>
+                <div class="row">
+                    <div class="col">
+                        <label>Başlangıç Tarihi</label>
+                        <input type="date" [(ngModel)]="date_begin"/> 
+                    </div>
+
+                    <div class="col">
+                        <label>Bitiş Tarihi</label>
+                        <input type="date" [(ngModel)]="date_end"/> 
+                    </div>
+
+                </div>
+
+                <button class=submit (click)="get_log_with_date()" [disabled]="date_begin === undefined || date_end === undefined || date_begin > date_end">Tarih Takibi</button><br>
+                <button class=submit (click)="get_all_logs()">Bütün Zaman Takibi</button>
+
+                
+                <div class="row" style="margin-top:10px;" >
+                    <table>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Tip</th>
+                                <th>Şirket İsmi</th>
+                                <th>Ürün Listesi</th>
+                            </tr>
+
+                        <ng-container *ngFor="let item of log_list">
+                            <tr>
+                                <td>{{item['date']}}</td>
+                                <td>{{item['transaction_type']}}</td>
+                                <td>{{item['sirket_ismi']}}</td>
+                                <td><a href="#" (click)="product_list(item)">Detaylar</a></td>
+                            </tr>
+                        </ng-container>
+                    </table>
+                </div>
+
+            </ng-template>
+    </div>
+</ng-template>
+
+<ng-template [ngIf]='!logged'>
+    <h1>Lütfen Giriş Yapın</h1>
+    <div class="row">
+        <label>Kullanıcı Adı</label>
+        <input type="text" [(ngModel)]="username"/>
+    </div>
+    <div class="row">
+        <label>Şifre</label>
+        <input type="password" [(ngModel)]="password"/>
+    </div>
+    <button class=submit (click)="login()" [disabled]="username === undefined || password === undefined">Giriş</button>
+</ng-template>

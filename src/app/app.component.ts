@@ -7,12 +7,17 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
+  logged = false; // change
+
+  username:string = undefined;
+  password:string = undefined;
+
   buying = false;
   producing = false;
-  stock = false; // change
+  stock = true; // change
   ready = false;
   sell = false;
-  log = true;
+  log = false;
 
   sirket_ismi:string;
   yay_type:string;
@@ -22,6 +27,7 @@ export class AppComponent implements OnInit{
 
   date_begin:any;
   date_end:any;
+  log_list:any;
 
   buy_77001 = 0;
   buy_77002 = 0;
@@ -178,6 +184,7 @@ export class AppComponent implements OnInit{
   }
 
   clear_log_values() {
+    this.log_list = undefined;
     this.date_begin = undefined;
     this.date_end = undefined;
   }
@@ -307,8 +314,15 @@ export class AppComponent implements OnInit{
     );
   }
 
-  test() {
-    console.log(Date().toString());
+  product_list(items) {
+    console.log(items);
+    var list = items['urun_list'];
+    var info = new String();
+    info = "Ürün Listesi:\n";
+    for (let item of list) {
+      info += item['name'] + ' ' + item['value'] + ' adet\n';
+    }
+    alert(info);
   }
 
   format_data() {
@@ -542,24 +556,52 @@ export class AppComponent implements OnInit{
     this.data.get_logs(undefined, undefined).then(
       (res) => {
         console.log(res);
+        this.log_list = res;
       },
       (res) => {
         console.log(res);
+        alert("Hata");
         console.log('error');
       }
     );
   }
 
   get_log_with_date() {
-    this.data.get_logs(this.date_begin, this.date_end).then(
+    
+    this.data.get_logs(Date.parse(this.date_begin), Date.parse(this.date_end)).then(
       (res) => {
         console.log(res);
+        this.log_list = res;
       },
       (res) => {
         console.log(res);
+        alert('Hata');
         console.log('error');
       }
     );
+  }
+
+  login() {
+    this.data.login(this.username,this.password).then(
+      (res) => {
+        console.log(res);
+        console.log('success');
+        this.logged = true;
+      },
+      (res) => {
+        console.log(res);
+        if (res.body == "User Not Found") {
+          alert("Hatalı Kullanıcı Adı")
+        } else if (res.body == "Wrong Password") {
+          alert("Hatalı Şifre")
+        } else {
+          alert("Hata " + res.body);        
+        }
+        this.logged = false;
+      }
+
+    );
+
   }
   
 }
