@@ -118,10 +118,10 @@ export class DataService {
     return list;
 
   }
-  get_logs(date_begin?:any,date_end?:any):Promise<any> {
+  get_logs(alim:boolean, satis:boolean, uretim:boolean,date_begin?:any,date_end?:any):Promise<any> {
     var promise = new Promise<any> ((resolve, reject) => {
       console.log("Calling api");
-      this.http.get(this.api_url + 'log?date_begin=' + date_begin + '&date_end=' + date_end).toPromise().then(
+      this.http.get(this.api_url + 'log?date_begin=' + date_begin + '&date_end=' + date_end + '&alim=' + alim + '&satis=' + satis + '&uretim=' + uretim).toPromise().then(
         (res:any) => {
           console.log("Success");
           for (let item of res.body) {

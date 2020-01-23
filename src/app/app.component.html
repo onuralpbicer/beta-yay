@@ -477,6 +477,16 @@
                     </div>
 
                 </div>
+                <div class="row">
+                    <label>Alım</label>
+                        <input type="checkbox" [(ngModel)]="alim_log"/> <br>
+
+                    <label>Satış</label>
+                        <input type="checkbox" [(ngModel)]="satis_log"/> <br>
+
+                    <label>Üretim</label>
+                        <input type="checkbox" [(ngModel)]="uretim_log"/>
+                </div>
 
                 <button class=submit (click)="get_log_with_date()" [disabled]="date_begin === undefined || date_end === undefined || date_begin > date_end">Tarih Raporu</button><br>
                 <button class=submit (click)="get_all_logs()">Bütün Zaman Raporu</button>

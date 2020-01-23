@@ -7,7 +7,7 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  logged = false; // change
+  logged = true; // change
 
   username:string = undefined;
   password:string = undefined;
@@ -22,6 +22,10 @@ export class AppComponent implements OnInit{
   sell = false;
   log = false;
   add = false;
+
+  alim_log = true;
+  uretim_log = true;
+  satis_log = true;
 
   sirket_ismi:string;
   yay_type:string;
@@ -215,6 +219,10 @@ export class AppComponent implements OnInit{
     this.log_list = undefined;
     this.date_begin = undefined;
     this.date_end = undefined;
+    this.uretim_log = true;
+    this.satis_log = true;
+    this.alim_log = true;
+
   }
 
   sell_items() {
@@ -581,7 +589,7 @@ export class AppComponent implements OnInit{
 
   }
   get_all_logs() {
-    this.data.get_logs(undefined, undefined).then(
+    this.data.get_logs(this.alim_log, this.satis_log, this.uretim_log,undefined, undefined).then(
       (res) => {
         console.log(res);
         this.log_list = res;
@@ -596,7 +604,7 @@ export class AppComponent implements OnInit{
 
   get_log_with_date() {
     
-    this.data.get_logs(Date.parse(this.date_begin), Date.parse(this.date_end)).then(
+    this.data.get_logs(this.alim_log, this.satis_log, this.uretim_log,Date.parse(this.date_begin), Date.parse(this.date_end)).then(
       (res) => {
         console.log(res);
         this.log_list = res;
