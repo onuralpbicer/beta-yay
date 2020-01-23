@@ -7,7 +7,7 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  logged = true; // change
+  logged = false; // change
 
   username:string = undefined;
   password:string = undefined;
