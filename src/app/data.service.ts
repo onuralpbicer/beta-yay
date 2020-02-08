@@ -124,6 +124,7 @@ export class DataService {
       this.http.get(this.api_url + 'log?date_begin=' + date_begin + '&date_end=' + date_end + '&alim=' + alim + '&satis=' + satis + '&uretim=' + uretim).toPromise().then(
         (res:any) => {
           console.log("Success");
+          console.log(res);
           for (let item of res.body) {
             item['date'] = new Date(item['date']).toLocaleDateString();
           }

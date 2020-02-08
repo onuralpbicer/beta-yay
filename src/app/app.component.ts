@@ -7,7 +7,7 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  logged = false; // change
+  logged = true; // change
 
   username:string = undefined;
   password:string = undefined;
@@ -17,9 +17,9 @@ export class AppComponent implements OnInit{
 
   buying = false;
   producing = false;
-  stock = true; // change
+  stock = false; // change
   ready = false;
-  sell = false;
+  sell = true;
   log = false;
   add = false;
 
@@ -61,6 +61,12 @@ export class AppComponent implements OnInit{
   buy_775percin = 0;
   buy_775plaka = 0;
 
+  buy_shmkapak = 0;
+  buy_m18burc = 0;
+  buy_m16burc = 0;
+  buy_m16pul = 0;
+  buy_m16somun = 0;
+
   stock_77001:number;
   stock_77002:number;
   stock_77003:number;
@@ -85,6 +91,12 @@ export class AppComponent implements OnInit{
   stock_775percin:number;
   stock_775plaka:number;
 
+  stock_shmkapak:number;
+  stock_m18burc:number;
+  stock_m16burc:number;
+  stock_m16pul:number;
+  stock_m16somun:number;
+
   ready_77001:number;
   ready_77002:number;
   ready_77003:number;
@@ -102,6 +114,11 @@ export class AppComponent implements OnInit{
   ready_77507:number;
   ready_77508:number;
 
+  ready_shm05:number;
+  ready_shm06:number;
+  ready_shm07:number;
+  ready_shm08:number;
+
 
   constructor(
     private data:DataService,
@@ -115,6 +132,8 @@ export class AppComponent implements OnInit{
 
   checkValues() {
     if (this.yay_type === '775' && (this.yay_size === 1 || this.yay_size === 9 ) ) {
+      return true;
+    } else if (this.yay_type === 'SHM' && (this.yay_size === 1 || this.yay_size === 2 || this.yay_size === 3 || this.yay_size === 4  || this.yay_size === 9)){
       return true;
     }
     return false;
@@ -226,7 +245,12 @@ export class AppComponent implements OnInit{
   }
 
   sell_items() {
-    if (this.checkValues()) {
+    if (this.yay_type === 'SHM' && this.plaka === true) {
+      alert("SHM Plaka Almaz");
+      this.clear_sell_values();
+      this.goToStock();
+      this.goToSell();
+    } else if (this.checkValues()) {
       alert("Lütfen Yay Tipini ve Boyunu Kontrol Ediniz");
       this.clear_sell_values();
       this.goToStock();
@@ -455,6 +479,26 @@ export class AppComponent implements OnInit{
         {
           'name':'775-plaka',
           'value':this.buy_775plaka
+        },
+        {
+          'name':'shm-kapak',
+          'value':this.buy_shmkapak
+        },
+        {
+          'name':'m18-burc',
+          'value':this.buy_m18burc
+        },
+        {
+          'name':'m16-burc',
+          'value':this.buy_m16burc
+        },
+        {
+          'name':'m16-pul',
+          'value':this.buy_m16pul
+        },
+        {
+          'name':'m16-somun',
+          'value':this.buy_m16somun
         }
       ]
     }
@@ -488,6 +532,11 @@ export class AppComponent implements OnInit{
     this.buy_775kapak = 0;
     this.buy_775percin = 0;
     this.buy_775plaka = 0;
+    this.buy_shmkapak = 0;
+    this.buy_m18burc = 0;
+    this.buy_m16burc = 0;
+    this.buy_m16pul = 0;
+    this.buy_m16somun = 0;
 
   }
 
@@ -524,6 +573,7 @@ export class AppComponent implements OnInit{
       (list) => {
         // resolve
         [
+          this.ready_shm08,
           this.ready_77502,
           this.ready_77503,
           this.ready_77505,
@@ -532,8 +582,11 @@ export class AppComponent implements OnInit{
           this.ready_77009,
           this.ready_77508,
           this.ready_77007,
+          this.ready_shm07,
           this.ready_77002,
+          this.ready_shm05,
           this.ready_77504,
+          this.ready_shm06,
           this.ready_77003,
           this.ready_77001,
           this.ready_77006,
@@ -561,22 +614,27 @@ export class AppComponent implements OnInit{
           this.stock_77502,
           this.stock_77503,
           this.stock_770kapak,
+          this.stock_m18burc,
           this.stock_77505,
           this.stock_775percin,
           this.stock_77008,
           this.stock_77005,
+          this.stock_m16pul,
           this.stock_77009,
           this.stock_77508,
           this.stock_77007,
+          this.stock_shmkapak,
           this.stock_77002,
           this.stock_77504,
           this.stock_775kapak,
+          this.stock_m16burc,
           this.stock_77003,
           this.stock_77001,
           this.stock_77006,
           this.stock_77507,
           this.stock_770percin,
           this.stock_775plaka,
+          this.stock_m16somun,
           this.stock_77506,
           this.stock_77004
         ] = list;

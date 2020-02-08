@@ -3,11 +3,11 @@
 <ng-template [ngIf]='logged'>
     <button class="button" (click)='goToBuy()' [disabled]='buying'>Alıma Git</button>
     <button class="button" (click)='goToProducing()' [disabled]='producing'>Üretime Git</button>
-    <button class="button" (click)='goToStock()' [disabled]='stock'>Yay Stoğuna Git</button>
+    <button class="button" (click)='goToStock()' [disabled]='stock'>Stoğa Git</button>
     <button class="button" (click)='goToReadyStock()' [disabled]='ready'>Mamül Stoğa Git</button>
     <button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
     <button class="button" (click)='goToLog()' [disabled]='log'>Raporlamaya Git</button>
-    <button class="button" (click)='goToAddUser()' [disabled]='add' *ngIf='username === "onuralpbicer" || username === "soner" || username === "hurriyet"'>Add User</button>
+    <button class="button" (click)='goToAddUser()' [disabled]='add' *ngIf='username === "onuralpbicer" || username === "soner" || username === "hurriyet" || username === "arda"'>Add User</button>
     <!-- <button (click)="test()">test</button> -->
 
     <div>
@@ -31,6 +31,10 @@
                     <label >775-02(yay)</label> 
                     <input type="number" placeholder="0" [(ngModel)]="buy_77502"/>
                 </div>
+                <div class="col">
+                    <label >SHM Kapak</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_shmkapak"/>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -40,6 +44,10 @@
                 <div class="col">
                     <label >775-03(yay)</label> 
                     <input type="number" placeholder="0" [(ngModel)]="buy_77503"/>
+                </div>
+                <div class="col">
+                    <label >M18 Burç</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_m18burc"/>
                 </div>
             </div>
             <div class="row">
@@ -51,6 +59,10 @@
                     <label >775-04(yay)</label> 
                     <input type="number" placeholder="0" [(ngModel)]="buy_77504"/>
                 </div>
+                <div class="col">
+                    <label >M16 Dişli Burç</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_m16burc"/>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -61,6 +73,10 @@
                     <label >775-05(yay)</label> 
                     <input type="number" placeholder="0" [(ngModel)]="buy_77505"/>
                 </div>
+                <div class="col">
+                    <label >M16 Pul</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_m16pul"/>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -70,6 +86,10 @@
                 <div class="col">
                     <label >775-06(yay)</label> 
                     <input type="number" placeholder="0" [(ngModel)]="buy_77506"/>
+                </div>
+                <div class="col">
+                    <label >M16 Somun</label> 
+                    <input type="number" placeholder="0" [(ngModel)]="buy_m16somun"/>
                 </div>
             </div>
             <div class="row">
@@ -153,11 +173,12 @@
         <!-- Code for when you're producing -->
         <h1>Üretim</h1>
         <div class="row">
-            <label>Yay Tipi</label>
+            <label>Ürün Tipi</label>
                 <select class="select" [(ngModel)]="yay_type">
 
                     <option value="770">770</option>
                     <option value="775">775</option>
+                    <option value="SHM">SHM</option> 
 
                 </select>
         </div>
@@ -165,15 +186,15 @@
             <label>Yay Boyu</label>
                 <select class="select" [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
 
-                    <option value="01" [disabled]="yay_type === '775'">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
+                    <option value="01" [disabled]="yay_type !== '770'">01</option>
+                    <option value="02" [disabled]="yay_type === 'SHM'">02</option>
+                    <option value="03" [disabled]="yay_type === 'SHM'">03</option>
+                    <option value="04" [disabled]="yay_type === 'SHM'">04</option>
                     <option value="05">05</option>
                     <option value="06">06</option>
                     <option value="07">07</option>
                     <option value="08">08</option>
-                    <option value="09" [disabled]="yay_type === '775'">09</option>
+                    <option value="09" [disabled]="yay_type !== '770'">09</option>
 
                     
                 </select> 
@@ -217,6 +238,10 @@
                     <label >775-02(yay)</label> 
                     <input type="number" placeholder="{{stock_77502}}" disabled/>
                 </div>
+                <div class="col">
+                    <label >SHM Kapak</label> 
+                    <input type="number" placeholder="{{stock_shmkapak}}" disabled/>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -226,6 +251,10 @@
                 <div class="col">
                     <label >775-03(yay)</label> 
                     <input type="number" placeholder="{{stock_77503}}" disabled/>
+                </div>
+                <div class="col">
+                    <label >M18 Burç</label> 
+                    <input type="number" placeholder="{{stock_m18burc}}" disabled/>
                 </div>
             </div>
             <div class="row">
@@ -237,6 +266,10 @@
                     <label >775-04(yay)</label> 
                     <input type="number" placeholder="{{stock_77504}}" disabled/>
                 </div>
+                <div class="col">
+                    <label >M16 Burç</label> 
+                    <input type="number" placeholder="{{stock_m16burc}}" disabled/>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -247,6 +280,10 @@
                     <label >775-05(yay)</label> 
                     <input type="number" placeholder="{{stock_77505}}" disabled/>
                 </div>
+                <div class="col">
+                    <label >M16 Pul</label> 
+                    <input type="number" placeholder="{{stock_m16pul}}" disabled/>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -256,6 +293,10 @@
                 <div class="col">
                     <label >775-06(yay)</label> 
                     <input type="number" placeholder="{{stock_77506}}" disabled/>
+                </div>
+                <div class="col">
+                    <label >M16 Somun</label> 
+                    <input type="number" placeholder="{{stock_m16somun}}" disabled/>
                 </div>
             </div>
             <div class="row">
@@ -325,7 +366,7 @@
             <h1>Mamül Yaylar</h1>
             <div class="row">
                 <div class="col">
-                    <label >770-01(yay)</label> 
+                    <label >770-01</label> 
                     <input type="number" placeholder="{{ready_77001}}" disabled/>
                 </div>
                 <div class="col">
@@ -333,77 +374,93 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <label >770-02(yay)</label> 
+                    <label >770-02</label> 
                     <input type="number" placeholder="{{ready_77002}}" disabled/> 
                 </div>
                 <div class="col">
-                    <label >775-02(yay)</label> 
+                    <label >775-02</label> 
                     <input type="number" placeholder="{{ready_77502}}" disabled/>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label >770-03(yay)</label> 
+                    <label >770-03</label> 
                     <input type="number" placeholder="{{ready_77003}}"  disabled/> 
                 </div>
                 <div class="col">
-                    <label >775-03(yay)</label> 
+                    <label >775-03</label> 
                     <input type="number" placeholder="{{ready_77503}}" disabled/>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label >770-04(yay)</label> 
+                    <label >770-04</label> 
                     <input type="number" placeholder="{{ready_77004}}" disabled/> 
                 </div>
                 <div class="col">
-                    <label >775-04(yay)</label> 
+                    <label >775-04</label> 
                     <input type="number" placeholder="{{ready_77504}}" disabled/>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label >770-05(yay)</label> 
-                    <input type="number" placeholder="{{ready_77005}}" disabled/> 
+                    <label >770-05</label> 
+                    <input type="number" placeholder="{{ready_77005}}" disabled/>
                 </div>
                 <div class="col">
-                    <label >775-05(yay)</label> 
+                    <label >775-05</label> 
                     <input type="number" placeholder="{{ready_77505}}" disabled/>
+                </div>
+                <div class="col">
+                    <label >SHM-05T</label> 
+                    <input type="number" placeholder="{{ready_shm05}}" disabled/>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label >770-06(yay)</label> 
+                    <label >770-06</label> 
                     <input type="number" placeholder="{{ready_77006}}" disabled/> 
                 </div>
                 <div class="col">
-                    <label >775-06(yay)</label> 
+                    <label >775-06</label> 
                     <input type="number" placeholder="{{ready_77506}}" disabled/>
+                </div>
+                <div class="col">
+                    <label >SHM-06</label> 
+                    <input type="number" placeholder="{{ready_shm06}}" disabled/>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label >770-07(yay)</label> 
+                    <label >770-07</label> 
                     <input type="number" placeholder="{{ready_77007}}"  disabled/> 
                 </div>
                 <div class="col">
-                    <label >775-07(yay)</label> 
+                    <label >775-07</label> 
                     <input type="number" placeholder="{{ready_77507}}" disabled/>
+                </div>
+                <div class="col">
+                    <label >SHM-07</label> 
+                    <input type="number" placeholder="{{ready_shm07}}" disabled/>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label >770-08(yay)</label> 
+                    <label >770-08</label> 
                     <input type="number" placeholder="{{ready_77008}}" disabled/> 
                 </div>
                 <div class="col">
-                    <label >775-08(yay)</label> 
+                    <label >775-08</label> 
                     <input type="number" placeholder="{{ready_77508}}" disabled/>
+                </div>
+                <div class="col">
+                    <label >SHM-08</label> 
+                    <input type="number" placeholder="{{ready_shm08}}" disabled/>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <label >770-09(yay)</label> 
+                    <label >770-09</label> 
                     <input type="number" placeholder="{{ready_77009}}" disabled/> 
                 </div>
                 <div class="col">
@@ -423,6 +480,7 @@
         
                         <option value="770">770</option>
                         <option value="775">775</option>
+                        <option value="SHM">SHM</option>
         
                     </select>
             </div>
@@ -430,15 +488,15 @@
                 <label>Yay Boyu</label>
                     <select class="select" [disabled]="yay_type === undefined" [(ngModel)]="yay_size">
         
-                        <option value="01" [disabled]="yay_type === '775'">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
+                        <option value="01" [disabled]="yay_type !== '770'">01</option>
+                        <option value="02" [disabled]="yay_type === 'SHM'">02</option>
+                        <option value="03" [disabled]="yay_type === 'SHM'">03</option>
+                        <option value="04" [disabled]="yay_type === 'SHM'">04</option>
                         <option value="05">05</option>
                         <option value="06">06</option>
                         <option value="07">07</option>
                         <option value="08">08</option>
-                        <option value="09" [disabled]="yay_type === '775'">09</option>
+                        <option value="09" [disabled]="yay_type !== '770'">09</option>
         
                         
                     </select> 
@@ -451,7 +509,7 @@
         
             <div class="row">
                 <label>Plaka</label>
-                    <input type="checkbox" [(ngModel)]="plaka"/> 
+                    <input type="checkbox" [(ngModel)]="plaka" [disabled]="yay_type === 'SHM'"/>
             </div>
             <div class="row">
                 <label >Şirket İsmi</label>
