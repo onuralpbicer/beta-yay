@@ -2,8 +2,10 @@
 
 <ng-template [ngIf]='logged'>
     <button class="button" (click)='goToBuy()' [disabled]='buying'>Alıma Git</button>
-    <button class="button" (click)='goToProducing()' [disabled]='producing'>Üretime Git</button>
     <button class="button" (click)='goToStock()' [disabled]='stock'>Stoğa Git</button>
+    <button class="button" (click)='goToProducing()' [disabled]='producing'>Üretime Git</button>
+    <button class="button" (click)='goToKapakProducing()' [disabled]='kapakProducing'>Kapak Üretimine Git</button>    
+    <button class="button" (click)='goToKapakStock()' [disabled]='kapakStock'>Yarı Mamül(Kapak) Stoğuna Git</button>
     <button class="button" (click)='goToReadyStock()' [disabled]='ready'>Mamül Stoğa Git</button>
     <button class="button" (click)='goToSell()' [disabled]='sell'>Satışa Git</button>
     <button class="button" (click)='goToLog()' [disabled]='log'>Raporlamaya Git</button>
@@ -212,10 +214,35 @@
         </ng-template>
 
 
+        <ng-template [ngIf]='kapakProducing'>
+            <h1>Kapak Üretimi</h1>
+            <div class="row">
+                <label>Kapak Tipi</label>
+                <select class="select" [(ngModel)]="kapak_type">
+
+                    <option value="770">770</option>
+                    <option value="775">775</option>
+                    <option value="SHM">SHM</option> 
+
+                </select>
+            </div>
+            <div class="row" *ngIf="kapak_type == 'SHM'">
+                <label>Dişli</label>
+                    <input type="checkbox" [(ngModel)]="kapak_disli"/>
+            </div>
+            <div class="row">
+                <label>Adet</label>
+                <input type="number" [(ngModel)]="kapak_quantity"/>
+            </div>
+            
+                <button class="submit"  [disabled]="kapak_type === undefined || kapak_quantity === 0" (click)="produce_kapak()">Üretim</button>
+
+        </ng-template>
 
 
-
-
+        <ng-template [ngIf]='kapakStock'>
+            
+        </ng-template>
 
 
         <ng-template [ngIf]='stock'>
@@ -596,13 +623,16 @@
 
 <ng-template [ngIf]='!logged'>
     <h1>Lütfen Giriş Yapın</h1>
-    <div class="row">
-        <label>Kullanıcı Adı</label>
-        <input type="text" [(ngModel)]="username"/>
-    </div>
-    <div class="row">
-        <label>Şifre</label>
-        <input type="password" [(ngModel)]="password"/>
-    </div>
-    <button class=submit (click)="login()" [disabled]="username === undefined || password === undefined">Giriş</button>
+    <form>
+        <div class="row">
+            <label for="username">Kullanıcı Adı</label>
+            <input type="text" id="username" name="username" [(ngModel)]="username"/>
+        </div>
+        <div class="row">
+            <label for="password">Şifre</label>
+            <input type="password" id="password" name="password" [(ngModel)]="password"/>
+        </div>
+        
+        <button class=submit (click)="login()" [disabled]="username === undefined || password === undefined">Giriş</button>
+    </form>
 </ng-template>

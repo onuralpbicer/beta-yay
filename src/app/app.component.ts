@@ -22,6 +22,8 @@ export class AppComponent implements OnInit{
   sell = false;
   log = false;
   add = false;
+  kapakProducing = false;
+  kapakStock = false;
 
   alim_log = true;
   uretim_log = true;
@@ -32,6 +34,10 @@ export class AppComponent implements OnInit{
   yay_size:number;
   plaka = false;
   quantity = 0;
+
+  kapak_type:string;
+  kapak_quantity = 0;
+  kapak_disli:boolean = false;
 
   date_begin:any;
   date_end:any;
@@ -149,38 +155,65 @@ export class AppComponent implements OnInit{
     this.ready = true;
     this.sell = false;
     this.log = false;
+    this.kapakProducing = false;
+    this.kapakStock = false;
   }
   
   goToBuy() {
     this.clear_buy_values();
+    this.kapakProducing = false;
     this.add = false;
     this.log = false;
     this.buying = true;
     this.stock = false;
     this.ready = false;
     this.producing = false;
+    this.kapakStock = false;
     this.sell = false;
   }
   
   goToProducing() {
     this.clear_produce_values();
+    this.kapakProducing = false;
     this.add = false;
     this.log = false;
     this.buying = false;
     this.stock = false;
     this.ready = false;
     this.producing = true;
+    this.kapakStock = false;
     this.sell = false;
   }
 
-  goToSell() {
-    this.clear_sell_values();
+  clearKapakValues() {
+    this.kapak_disli = false;
+    this.kapak_quantity = 0;
+    this.kapak_type = undefined;
+  }
+
+  goToKapakProducing() {
+    this.clearKapakValues();
+    this.kapakProducing = true;
     this.add = false;
     this.log = false;
     this.buying = false;
     this.stock = false;
     this.ready = false;
     this.producing = false;
+    this.kapakStock = false;
+    this.sell = false;
+  }
+
+  goToSell() {
+    this.clear_sell_values();
+    this.kapakProducing = false;
+    this.add = false;
+    this.log = false;
+    this.buying = false;
+    this.stock = false;
+    this.ready = false;
+    this.producing = false;
+    this.kapakStock = false;
     this.sell = true;
   }
 
@@ -201,8 +234,25 @@ export class AppComponent implements OnInit{
     this.ready = false;
     this.stock = true;
     this.producing = false;
+    this.kapakStock = false;
     this.sell = false;
+    this.kapakProducing = false;
   }
+
+  goToKapakStock() {
+    // API call to get stock
+    this.get_kapak_stock();
+    this.add = false;
+    this.log = false;
+    this.buying = false;
+    this.ready = false;
+    this.stock = false;
+    this.producing = false;
+    this.kapakStock = true;
+    this.sell = false;
+    this.kapakProducing = false;
+  }
+
 
   goToLog() {
     this.clear_log_values();
@@ -212,14 +262,17 @@ export class AppComponent implements OnInit{
     this.ready = false;
     this.stock = false;
     this.producing = false;
+    this.kapakStock = false;
     this.sell = false;
+    this.kapakProducing = false;
 
   } 
 
   goToAddUser() {
     this.clear_add_values();
-    
+    this.kapakProducing = false;
     this.add = true;
+    this.kapakStock = false;
     this.log = false;
     this.buying = false;
     this.ready = false;
@@ -287,6 +340,26 @@ export class AppComponent implements OnInit{
 
   }
 
+  produce_kapak() {
+    this.data.make_kapak({
+      'timestamp':Date.now(),
+      'type':this.kapak_type,
+      'quantity':this.kapak_quantity,
+      'disli':this.kapak_disli
+    }).then(
+      (res) => {
+        console.log(res);
+        this.goToStock();
+        this.goToKapakProducing();
+        
+
+
+      }, 
+      (res) => {
+
+    });
+
+  }
 
   produce_items() {
     // API call to produce items
@@ -354,6 +427,13 @@ export class AppComponent implements OnInit{
     this.yay_type = undefined;
     this.yay_size = undefined;
     this.quantity = 0;
+
+  }
+
+  clear_kapak_produce_values() {
+    this.kapak_type = undefined;
+    this.kapak_quantity = 0;
+    this.kapak_disli = false;
 
   }
 
@@ -603,6 +683,19 @@ export class AppComponent implements OnInit{
 
     
     
+  }
+
+  get_kapak_stock(){
+    this.data.get_all_kapak().then(
+      (list) => {
+        // map kapak stock to vars
+      },
+      () => {
+        // clear kapak stock
+      }
+
+    );
+
   }
 
   get_stock(){
