@@ -165,12 +165,6 @@
         </ng-template>
 
 
-
-
-
-
-
-
         <ng-template [ngIf]='producing'>
         <!-- Code for when you're producing -->
         <h1>Üretim</h1>
@@ -241,7 +235,23 @@
 
 
         <ng-template [ngIf]='kapakStock'>
-            
+            <h1>Yarı Mamül(Kapak) Stoğu</h1>
+            <div class="row">
+                <label >770 Kapak</label> 
+                    <input type="number" placeholder="{{stock_kapak_770}}" disabled/>
+            </div>
+            <div class="row">
+                <label >775 Kapak</label> 
+                    <input type="number" placeholder="{{stock_kapak_775}}" disabled/>
+            </div>
+            <div class="row">
+                <label >SHM Dişli Kapak</label> 
+                    <input type="number" placeholder="{{stock_kapak_shm_disli}}" disabled/>
+            </div>
+            <div class="row">
+                <label >SHM Delikli Kapak</label> 
+                    <input type="number" placeholder="{{stock_kapak_shm_delikli}}" disabled/>
+            </div>
         </ng-template>
 
 

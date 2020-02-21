@@ -125,6 +125,11 @@ export class AppComponent implements OnInit{
   ready_shm07:number;
   ready_shm08:number;
 
+  stock_kapak_770:number;
+  stock_kapak_775:number;
+  stock_kapak_shm_disli:number;
+  stock_kapak_shm_delikli:number;
+
 
   constructor(
     private data:DataService,
@@ -688,13 +693,26 @@ export class AppComponent implements OnInit{
   get_kapak_stock(){
     this.data.get_all_kapak().then(
       (list) => {
-        // map kapak stock to vars
+        [
+          this.stock_kapak_775,
+          this.stock_kapak_shm_delikli,
+          this.stock_kapak_shm_disli,
+          this.stock_kapak_770,
+        ] = list;
       },
       () => {
-        // clear kapak stock
+        this.clear_kapak_stock();
       }
 
     );
+
+  }
+
+  clear_kapak_stock() {
+    this.stock_kapak_775 = 0;
+    this.stock_kapak_shm_delikli = 0;
+    this.stock_kapak_shm_disli = 0;
+    this.stock_kapak_770 = 0;
 
   }
 

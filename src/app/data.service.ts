@@ -35,9 +35,8 @@ export class DataService {
       this.http.get(this.api_url + 'kapak-stock').toPromise().then(
         (res:any) => {
           console.log("Success");
-          // console.log(res['body']);
-          // resolve(this.fix_output(res['body']['Items']));
-          resolve(res);
+          console.log(res['body']);
+          resolve(this.fix_output(res['body']['Items']));
         },
         (res:any) => {
           console.log("Error");
