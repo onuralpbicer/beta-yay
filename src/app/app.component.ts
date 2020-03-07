@@ -460,14 +460,33 @@ export class AppComponent implements OnInit{
   }
 
   product_list(items) {
-    console.log(items);
+    // console.log(items);
     var list = items['urun_list'];
-    var info = new String();
-    info = "Ürün Listesi:\n";
-    for (let item of list) {
-      info += item['name'] + ' ' + item['value'] + ' adet\n';
+    if (items['transaction_type'] == 'Alım') {
+      console.log(list);
+      if (list['length'] == 1) {
+        var info = new String();
+        info = "Ürün Listesi:\n";
+        let item = list[0];
+        info += item['name'] + ' ' + item['value']['value'] + ' adet\n';
+        alert(info);
+      } else {
+        var info = new String();
+        info = "Ürün Listesi:\n";
+        for (let item of list) {
+          info += item['name'] + ' ' + item['value'] + ' adet\n';
+        }
+        alert(info);
+      }
+      
+    } else {
+      var info = new String();
+      info = "Ürün Listesi:\n";
+      for (let item of list) {
+        info += item['name'] + ' ' + item['value'] + ' adet\n';
+      }
+      alert(info);
     }
-    alert(info);
   }
 
   format_data() {
