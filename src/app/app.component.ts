@@ -7,20 +7,20 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  logged = false; // change
+  logged = true; // change
 
   username:string = undefined;
   password:string = undefined;
 
   new_user:string = undefined;
   new_pass:string = undefined;
-
+  
   buying = false;
   producing = false;
-  stock = true; // change
+  stock = false; // change
   ready = false;
   sell = false;
-  log = false;
+  log = true;
   add = false;
   kapakProducing = false;
   kapakStock = false;
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
   alim_log = true;
   uretim_log = true;
   satis_log = true;
+  yay_log = false;
 
   sirket_ismi:string;
   yay_type:string;
@@ -72,6 +73,23 @@ export class AppComponent implements OnInit{
   buy_m16burc = 0;
   buy_m16pul = 0;
   buy_m16somun = 0;
+
+  log_77001 = false;
+  log_77002 = false;
+  log_77003 = false;
+  log_77004 = false;
+  log_77005 = false;
+  log_77006 = false;
+  log_77007 = false;
+  log_77008 = false;
+  log_77009 = false;
+  log_77502 = false;
+  log_77503 = false;
+  log_77504 = false;
+  log_77505 = false;
+  log_77506 = false;
+  log_77507 = false;
+  log_77508 = false;
 
   stock_77001:number;
   stock_77002:number;
@@ -299,7 +317,44 @@ export class AppComponent implements OnInit{
     this.uretim_log = true;
     this.satis_log = true;
     this.alim_log = true;
+    this.yay_log = false;
 
+  }
+
+  clear_yay_log_values() {
+    this.log_list = undefined;
+    this.date_begin = undefined;
+    this.date_end = undefined;
+    this.log_77001 = false;
+    this.log_77002 = false;
+    this.log_77003 = false;
+    this.log_77004 = false;
+    this.log_77005 = false;
+    this.log_77006 = false;
+    this.log_77007 = false;
+    this.log_77008 = false;
+    this.log_77009 = false;
+    this.log_77502 = false;
+    this.log_77503 = false;
+    this.log_77504 = false;
+    this.log_77505 = false;
+    this.log_77506 = false;
+    this.log_77507 = false;
+    this.log_77508 = false;
+
+  }
+
+  yay_message = 'Yay Raporlaması';
+
+  toggle_yay_log() {
+    this.yay_log = !this.yay_log;
+    if (this.yay_log == true) {
+      this.clear_yay_log_values();
+      this.yay_message = 'İşlem Raporlaması'
+    } else {
+      this.clear_log_values();
+      this.yay_message = 'Yay Raporlaması';
+    }
   }
 
   sell_items() {
@@ -316,7 +371,7 @@ export class AppComponent implements OnInit{
     } else if (this.quantity !== 0) {
 
       this.data.buy_items(this.format_sale_data()).then((res) => {
-        console.log(res);
+        //console.log(res);
           if (res.statusCode === 200) {
             alert("Satış Başarılı");
             this.clear_sell_values();
@@ -353,7 +408,7 @@ export class AppComponent implements OnInit{
       'disli':this.kapak_disli
     }).then(
       (res) => {
-        console.log(res);
+        //console.log(res);
         this.goToStock();
         this.goToKapakProducing();
         
@@ -376,7 +431,7 @@ export class AppComponent implements OnInit{
     } else if (this.quantity !== 0) {
 
       this.data.buy_items(this.format_production_data()).then((res) => {
-        console.log(res);
+        //console.log(res);
           if (res.statusCode === 200) {
             alert("Üretim Başarılı");
             this.clear_produce_values();
@@ -460,10 +515,10 @@ export class AppComponent implements OnInit{
   }
 
   product_list(items) {
-    // console.log(items);
+    // //console.log(items);
     var list = items['urun_list'];
     if (items['transaction_type'] == 'Alım') {
-      console.log(list);
+      //console.log(list);
       if (list['length'] == 1) {
         var info = new String();
         info = "Ürün Listesi:\n";
@@ -777,30 +832,62 @@ export class AppComponent implements OnInit{
 
   }
   get_all_logs() {
-    this.data.get_logs(this.alim_log, this.satis_log, this.uretim_log,undefined, undefined).then(
+    this.data.get_logs(this.alim_log, this.satis_log, this.uretim_log,this.yay_log,undefined, undefined,
+      this.log_77001,
+      this.log_77002,
+      this.log_77003,
+      this.log_77004,
+      this.log_77005,
+      this.log_77006,
+      this.log_77007,
+      this.log_77008,
+      this.log_77009,
+      this.log_77502,
+      this.log_77503,
+      this.log_77504,
+      this.log_77505,
+      this.log_77506,
+      this.log_77507,
+      this.log_77508).then(
       (res) => {
-        console.log(res);
+        //console.log(res);
         this.log_list = res;
       },
       (res) => {
-        console.log(res);
+        //console.log(res);
         alert("Hata");
-        console.log('error');
+        //console.log('error');
       }
     );
   }
 
   get_log_with_date() {
     
-    this.data.get_logs(this.alim_log, this.satis_log, this.uretim_log,Date.parse(this.date_begin), Date.parse(this.date_end)).then(
+    this.data.get_logs(this.alim_log, this.satis_log, this.uretim_log,this.yay_log,Date.parse(this.date_begin), Date.parse(this.date_end),
+    this.log_77001,
+    this.log_77002,
+    this.log_77003,
+    this.log_77004,
+    this.log_77005,
+    this.log_77006,
+    this.log_77007,
+    this.log_77008,
+    this.log_77009,
+    this.log_77502,
+    this.log_77503,
+    this.log_77504,
+    this.log_77505,
+    this.log_77506,
+    this.log_77507,
+    this.log_77508).then(
       (res) => {
-        console.log(res);
+        //console.log(res);
         this.log_list = res;
       },
       (res) => {
-        console.log(res);
+        //console.log(res);
         alert('Hata');
-        console.log('error');
+        //console.log('error');
       }
     );
   }
@@ -808,12 +895,12 @@ export class AppComponent implements OnInit{
   login() {
     this.data.login(this.username,this.password).then(
       (res) => {
-        console.log(res);
-        console.log('success');
+        //console.log(res);
+        //console.log('success');
         this.logged = true;
       },
       (res) => {
-        console.log(res);
+        //console.log(res);
         if (res.body == "User Not Found") {
           alert("Hatalı Kullanıcı Adı")
         } else if (res.body == "Wrong Password") {
@@ -830,14 +917,14 @@ export class AppComponent implements OnInit{
   add_user() {
     this.data.signup(this.new_user, this.new_pass).then(
       (res) => {
-        console.log(res);
-        console.log('success');
+        //console.log(res);
+        //console.log('success');
         alert("Kullanıcı Ekleme Başarılı");
         this.clear_add_values();
       },
       (res) => {
-        console.log(res);
-        console.log('error');
+        //console.log(res);
+        //console.log('error');
         alert("Hata");
       }
 
