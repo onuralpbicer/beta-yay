@@ -7,7 +7,7 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  logged = true; // change
+  logged = false; // change
 
   username:string = undefined;
   password:string = undefined;
@@ -17,10 +17,10 @@ export class AppComponent implements OnInit{
   
   buying = false;
   producing = false;
-  stock = false; // change
+  stock = true; // change
   ready = false;
   sell = false;
-  log = true;
+  log = false;
   add = false;
   kapakProducing = false;
   kapakStock = false;
