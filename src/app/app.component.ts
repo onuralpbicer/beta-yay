@@ -409,6 +409,7 @@ export class AppComponent implements OnInit{
     }).then(
       (res) => {
         //console.log(res);
+        alert("Üretim Başarılı");
         this.goToStock();
         this.goToKapakProducing();
         
